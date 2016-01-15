@@ -1,0 +1,29 @@
+<!-- // Why does this work? it didn't call any function. -->
+
+var result;
+if (undefined) {
+  result = function () { return "blah blah blah"; }();
+} else {
+  result = function () { return "meow meow meow"; }();
+}
+console.log(result);
+
+
+
+<!-- display text in element -->
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+x = 7; // Assign 5 to x
+
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x;                     // Display x in the element
+
+var x; // Declare x
+</script>
+
+</body>
+</html>
