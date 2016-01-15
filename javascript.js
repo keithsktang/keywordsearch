@@ -16,8 +16,11 @@ var customers = [
 var list = document.getElementById("cus_list"), fragment = document.createDocumentFragment(), element;
 for (var i = 0, x = customers.length; i < x; i++) {
   element = document.createElement("li");
-  element.appendChild(document.createTextNode("company: " + customers[i].company));
-  element.appendChild(document.createTextNode("name: " + customers[i].name));
+  element.appendChild(document.createTextNode("Company: " + customers[i].company + "<p>"));
+  element.appendChild(document.createTextNode("Name: " + customers[i].name));
+  element.appendChild(document.createTextNode("Quote: " + customers[i].quote));
+  element.appendChild(document.createTextNode("image: " + customers[i].image));
+  element.appendChild(document.createTextNode("website: " + customers[i].url));
   fragment.appendChild(element);
 }
 list.appendChild(fragment);
