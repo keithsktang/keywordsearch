@@ -13,18 +13,29 @@ var customers = [
               url: "www.zanadu.cn"
             }
           ];
-var list = document.getElementById("cus_list"), fragment = document.createDocumentFragment(), element;
-for (var i = 0, x = customers.length; i < x; i++) {
-  var element = document.createElement("li");
-  element.appendChild(document.createTextNode("Company: " + customers[i].company));
-  element.appendChild(document.createElement("li"));
-  element.appendChild(document.createTextNode("Name: " + customers[i].name + " "));
-  element.appendChild(document.createElement("li"));
- element.appendChild(document.createTextNode("Quote: " + customers[i].quote + " "));
- element.appendChild(document.createElement("li"));
-  element.appendChild(document.createTextNode("image: " + customers[i].image + " "));
-  element.appendChild(document.createElement("li"));
-  element.appendChild(document.createTextNode("website: " + customers[i].url + " "));
-  fragment.appendChild(element);
-}
-list.appendChild(fragment);
+          var item = customers[Math.floor(Math.random() * customers.length)],
+            list = document.getElementById('cus_list'),
+            fragment = document.createDocumentFragment(),
+            element1 = document.createElement("li"),
+            element2 = document.createElement("li"),
+            element3 = document.createElement("li"),
+            element4 = document.createElement("li"),
+            element5 = document.createElement("li");
+          element1.innerText = "Company: " + item.company;
+          element2.innerText = "Name: " + item.name + " ";
+          element3.innerText = "Quote: " + item.quote + " ";
+          element4.innerText = "logo: " + item.image + " ";
+          element5.innerText = "website: " + item.url + " ";
+          fragment.appendChild(element1);
+          fragment.appendChild(element2);
+          fragment.appendChild(element3);
+          fragment.appendChild(element4);
+          fragment.appendChild(element5);
+          list.appendChild(fragment);
+// var item = customers[1], list = document.getElementById('cus_list'), fragment = document.createDocumentFragment(), element = document.createElement("li");
+//
+//   element.appendChild(document.createTextNode("Company: " + item.company));
+//     element.appendChild(document.createTextNode("Name: " + item.name + " "));
+//
+//     fragment.appendChild(element);
+//   list.appendChild(fragment);
