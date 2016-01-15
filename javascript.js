@@ -16,21 +16,21 @@ var customers = [
           var item = customers[Math.floor(Math.random() * customers.length)],
             list = document.getElementById('cus_list'),
             fragment = document.createDocumentFragment(),
-            element1 = document.createElement("li"),
-            element2 = document.createElement("li"),
-            element3 = document.createElement("li"),
-            element4 = document.createElement("li"),
-            element5 = document.createElement("li");
-          element1.innerText = "Company: " + item.company;
-          element2.innerText = "Name: " + item.name + " ";
-          element3.innerText = "Quote: " + item.quote + " ";
-          element4.innerText = "logo: " + item.image + " ";
-          element5.innerText = "website: " + item.url + " ";
-          fragment.appendChild(element1);
-          fragment.appendChild(element2);
-          fragment.appendChild(element3);
-          fragment.appendChild(element4);
-          fragment.appendChild(element5);
+            companyEle = document.createElement("li"),
+            nameEle = document.createElement("li"),
+            quoteEle = document.createElement("li"),
+            imageEle = document.createElement("li"),
+            urlEle = document.createElement("li");
+          companyEle.innerText = "Company: " + item.company;
+          nameEle.innerText = "Name: " + item.name + " ";
+          quoteEle.innerText = "Quote: " + item.quote + " ";
+          imageEle.innerText = "logo: " + item.image + " ";
+          urlEle.innerText = "website: " + item.url + " ";
+          fragment.appendChild(companyEle);
+          fragment.appendChild(nameEle);
+          fragment.appendChild(quoteEle);
+          fragment.appendChild(imageEle);
+          fragment.appendChild(urlEle);
           list.appendChild(fragment);
 // var item = customers[1], list = document.getElementById('cus_list'), fragment = document.createDocumentFragment(), element = document.createElement("li");
 //
