@@ -13,12 +13,6 @@ customers = [
               image: "img/logos/zanadu.jpg",
               url: "www.zanadu.cn"
             },
-            { company:
-              name:
-              quote:
-              image:
-              url:
-            },
             ]
 
 
