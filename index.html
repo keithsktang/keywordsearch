@@ -73,7 +73,7 @@ var item = customers[Math.floor(Math.random() * customers.length)],
   quoteClass = document.getElementById('customer-quotes'),
   imageClass = document.getElementById('customer-logos'),
   //set HTM
-  companyEle = document.createElement("strong"),
+  // companyEle = document.createElement("strong"),
   nameEle = document.createElement("cite"),
   quoteEle = document.createElement("blockquote"),
   imageEle1 = document.createElement("img"),
@@ -85,15 +85,21 @@ var item = customers[Math.floor(Math.random() * customers.length)],
   urlEle = document.createElement("a");
 
 
-companyEle.innerHTML = item.company;
+// companyEle.innerHTML = item.company;
 nameEle.innerHTML = "" + item.name + " ,  ";
 quoteEle.innerHTML = "\" " + item.quote + " \"";
 imageEle1.setAttribute("src", shuffledCus[0].image);
+imageEle1.setAttribute("alt", shuffledCus[0].company);
 imageEle2.setAttribute("src", shuffledCus[1].image);
+imageEle2.setAttribute("alt", shuffledCus[1].company);
 imageEle3.setAttribute("src", shuffledCus[2].image);
+imageEle3.setAttribute("alt", shuffledCus[2].company);
 imageEle4.setAttribute("src", shuffledCus[3].image);
+imageEle4.setAttribute("alt", shuffledCus[3].company);
 imageEle5.setAttribute("src", shuffledCus[4].image);
+imageEle5.setAttribute("alt", shuffledCus[4].company);
 imageEle6.setAttribute("src", shuffledCus[5].image);
+imageEle6.setAttribute("alt", shuffledCus[5].company);
 // imageEle.setAttribute("height", "100px");
 urlEle.innerHTML = item.url;
 urlEle.setAttribute("href", item.url);
