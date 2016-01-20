@@ -53,24 +53,56 @@ var customers = [
               url: "www.bluecomgroup.com"
             }
             ];
+  function shuffle(cust) {
+  var currentIndex = cust.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = cust[currentIndex];
+    cust[currentIndex] = cust[randomIndex];
+    cust[randomIndex] = temporaryValue;
+  }
+
+  return cust;
+}
+var shuffledCus = shuffle(customers);
+//set random item each time a page load/
 var item = customers[Math.floor(Math.random() * customers.length)],
+// console.log(item);
+  //set the CSS id selector variable/
   quoteClass = document.getElementById('customer-quotes'),
   imageClass = document.getElementById('customer-logos'),
+  //set HTM
   companyEle = document.createElement("strong"),
   nameEle = document.createElement("cite"),
   quoteEle = document.createElement("blockquote"),
-  imageEle = document.createElement("img"),
+  imageEle1 = document.createElement("img"),
+  imageEle2 = document.createElement("img"),
+  imageEle3 = document.createElement("img"),
+  imageEle4 = document.createElement("img"),
+  imageEle5 = document.createElement("img"),
+  imageEle6 = document.createElement("img"),
   urlEle = document.createElement("a");
+
 
 companyEle.innerHTML = item.company;
 nameEle.innerHTML = "" + item.name + " ,  ";
 quoteEle.innerHTML = "\" " + item.quote + " \"";
-imageEle.setAttribute("src", item.image);
-// you can add style like this//
-imageEle.setAttribute("height", "100px");
+imageEle1.setAttribute("src", shuffledCus[0].image);
+imageEle2.setAttribute("src", shuffledCus[1].image);
+imageEle3.setAttribute("src", shuffledCus[2].image);
+imageEle4.setAttribute("src", shuffledCus[3].image);
+imageEle5.setAttribute("src", shuffledCus[4].image);
+imageEle6.setAttribute("src", shuffledCus[5].image);
+// imageEle.setAttribute("height", "100px");
 urlEle.innerHTML = item.url;
 urlEle.setAttribute("href", item.url);
-imageClass.appendChild(imageEle);
+imageClass.appendChild(imageEle1);
+imageClass.appendChild(imageEle2);
+imageClass.appendChild(imageEle3);
+imageClass.appendChild(imageEle4);
+imageClass.appendChild(imageEle5);
+imageClass.appendChild(imageEle6);
 quoteClass.appendChild(quoteEle);
 quoteClass.appendChild(nameEle);
 quoteClass.appendChild(urlEle);
