@@ -45,13 +45,18 @@ var item = customers[Math.floor(Math.random() * customers.length)],
   imageEle = document.createElement("img"),
   urlEle = document.createElement("a");
 
-companyEle.innerText = item.company;
-nameEle.innerText = item.name;
-quoteEle.innerText = item.quote;
-imageEle.innerText = item.image;
-urlEle.innerText = item.url;
-quoteClass.appendChild(companyEle);
+companyEle.innerHTML = item.company;
+nameEle.innerHTML = "\" " + item.name + " \" , ";
+quoteEle.innerHTML = "\" " + item.quote + "\"";
+imageEle.setAttribute("src", item.image);
+// you can add style like this//
+imageEle.setAttribute("height", "100px");
+urlEle.innerHTML = item.company;
+urlEle.setAttribute("href", item.url);
 imageClass.appendChild(imageEle);
+quoteClass.appendChild(quoteEle);
+quoteClass.appendChild(nameEle);
+quoteClass.appendChild(urlEle);
 
 // version 2
 
