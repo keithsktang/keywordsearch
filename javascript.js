@@ -1,134 +1,74 @@
-var customers = [
-            { company: "Tradesparq",
-              name: "Brian Hager, Founder & President, Tradesparq",
-              quote: "We had many challenges that needed to be addressed. Performance, scalability, and security are very important to us. ChinaNetCloud's custom solution allowed us to point our resources towards building a best-in-class product. I'm happy to recommend ChinaNetCloud as the 'best of the best' in China.",
-              image: "img/logos/tradesparq.jpg",
-              url: "www.tradesparq.com"
-            },
-            { company: "Zanadu",
-              name: "Phil Mak, CTO of Zanadu",
-              quote: "I actually wish we had started working with them from the very beginning when we first launched our website, which would have saved us from a lot of pain and headaches. Of all the vendors I have worked with in the past, ChinaNetCloud is by far the most professional team I have met in this space.",
-              image: "img/logos/zanadu.jpg",
-              url: "www.zanadu.cn"
-            },
-            { company: "Yves Rocher",
-              name: "Pippin Zhang, eCommerce Manager of Yves Rocher",
-              quote: "Our eCommerce site had to meet our strict security requirements, be scalable, and launch in a very short time. ChinaNetCloud's Private Cloud solution met all our requirements, and their 24x7 unlimited support made my life easy. Thanks a lot for the great support during the set up phase and the collaborative spirit is really appreciated.",
-              image: "img/logos/yves-rocher.jpg",
-              url: "www.yvesrocherusa.cn"
-            },
-            { company: "SmarTots",
-              name: "Victor Wong, Founder and Chief Product Officer, SmarTots",
-              quote: "I'm a big fan of ChinaNetCloud's managed services and have used them at several of my companies. With ChinaNetCloud, I can focus on creating great products and features with the confidence that my web services will not go down.",
-              image: "img/logos/smartots.jpg",
-              url: "www.smartots.com"
-            },
-            { company: "Infinitus",
-              name: "Angelen Ngan, Infinitus",
-              quote: "The support team has been very professional and responsive.  Project Manager Rebecca and her team demonstrated professionalism and they respond to our questions and concerns timely. We are very pleased with your project team and the service received so far.  Keep up the great work and looking forward to a good partnership.",
-              image: "img/logos/infinitus.jpg",
-              url: "www.infinitus-int.com"
-            },
-            { company: "Bluecom Group",
-              name: "Patrick Deloy, Executive Director, Bluecom",
-              quote: "ChinaNetCloud is our trusted partner for all server management and hosting services. We entrust our clients to the long-term services of ChinaNetCloud and can be assured that they are greatly taken care of with ChinaNetCloud's first-class service and technical expertise, ensuring smooth operations and zero downtime.",
-              image: "img/logos/bluecom.jpg",
-              url: "www.bluecomgroup.com"
+var example = "The George Washington Bridge in New York City is one of the oldest bridges ever constructed. It is now being remodeled because the bridge is a landmark. City officials say that the landmark bridge effort will create a lot of new jobs in the city.";
+var data = example.replace(/\./g,' ').split(" ");
+var datafull = example.split(" ");
+
+var search = "Landmark City Bridge";
+var keywords = search.split(" ");
+
+var matcharray = [];//final match with the lowest index combination
+var comparearray = [];//temp array used to collect full object
+var temparray = [];//temp array used to collect word comparison
+var finalarray = [];//contains every combinations
+var results = [];//words and indexes
+var tempindex = 0;
+var index = 0;
+var runtime = 0;
+
+function matchingSearchwords(data,keywords) {
+    for ( x = 0; x < data.length; x++) {
+        for ( j = 0; j < keywords.length; j++) {
+                var word = data[x].toLowerCase();
+                var keyword = new RegExp ( "^" + keywords[j].toLowerCase() + "$" );
+                 if ( word.match(keyword) ) {
+                    results.push( { word: data[x].toLowerCase(), index: x} );
+
             }
-            ];
-var item = customers[Math.floor(Math.random() * customers.length)],
-  quoteClass = document.getElementById('customer-quotes'),
-  imageClass = document.getElementById('customer-logos'),
-  companyEle = document.createElement("strong"),
-  nameEle = document.createElement("cite"),
-  quoteEle = document.createElement("blockquote"),
-  imageEle = document.createElement("img"),
-  urlEle = document.createElement("a");
+        }
+    }
 
-companyEle.innerHTML = item.company;
-nameEle.innerHTML = "\" " + item.name + " \" , ";
-quoteEle.innerHTML = "\" " + item.quote + "\"";
-imageEle.setAttribute("src", item.image);
-// you can add style like this//
-imageEle.setAttribute("height", "100px");
-urlEle.innerHTML = item.company;
-urlEle.setAttribute("href", item.url);
-imageClass.appendChild(imageEle);
-quoteClass.appendChild(quoteEle);
-quoteClass.appendChild(nameEle);
-quoteClass.appendChild(urlEle);
+    return results;
+}
 
-// version 2
+var counter = 0;
+var ran = matchingSearchwords(data,keywords);
 
-// var customers = [
-//             { company: "Tradesparq",
-//               name: "Brian Hager, Founder & President, Tradesparq",
-//               quote: "We had many challenges that needed to be addressed. Performance, scalability, and security are very important to us. ChinaNetCloud's custom solution allowed us to point our resources towards building a best-in-class product. I'm happy to recommend ChinaNetCloud as the 'best of the best' in China.",
-//               image: "img/logos/tradesparq.jpg",
-//               url: "www.tradesparq.com"
-//             },
-//             { company: "Zanadu",
-//               name: "Phil Mak, CTO of Zanadu",
-//               quote: "I actually wish we had started working with them from the very beginning when we first launched our website, which would have saved us from a lot of pain and headaches. Of all the vendors I have worked with in the past, ChinaNetCloud is by far the most professional team I have met in this space.",
-//               image: "img/logos/zanadu.jpg",
-//               url: "www.zanadu.cn"
-//             },
-//             { company: "Yves Rocher",
-//               name: "Pippin Zhang, eCommerce Manager of Yves Rocher",
-//               quote: "Our eCommerce site had to meet our strict security requirements, be scalable, and launch in a very short time. ChinaNetCloud's Private Cloud solution met all our requirements, and their 24x7 unlimited support made my life easy. Thanks a lot for the great support during the set up phase and the collaborative spirit is really appreciated.",
-//               image: "img/logos/yves-rocher.jpg",
-//               url: "www.yvesrocherusa.cn"
-//             },
-//             { company: "SmarTots",
-//               name: "Victor Wong, Founder and Chief Product Officer, SmarTots",
-//               quote: "I'm a big fan of ChinaNetCloud's managed services and have used them at several of my companies. With ChinaNetCloud, I can focus on creating great products and features with the confidence that my web services will not go down.",
-//               image: "img/logos/smartots.jpg",
-//               url: "www.smartots.com"
-//             },
-//             { company: "Infinitus",
-//               name: "Angelen Ngan, Infinitus",
-//               quote: "The support team has been very professional and responsive.  Project Manager Rebecca and her team demonstrated professionalism and they respond to our questions and concerns timely. We are very pleased with your project team and the service received so far.  Keep up the great work and looking forward to a good partnership.",
-//               image: "img/logos/infinitus.jpg",
-//               url: "www.infinitus-int.com"
-//             },
-//             { company: "Bluecom Group",
-//               name: "Patrick Deloy, Executive Director, Bluecom",
-//               quote: "ChinaNetCloud is our trusted partner for all server management and hosting services. We entrust our clients to the long-term services of ChinaNetCloud and can be assured that they are greatly taken care of with ChinaNetCloud's first-class service and technical expertise, ensuring smooth operations and zero downtime.",
-//               image: "img/logos/bluecom.jpg",
-//               url: "www.bluecomgroup.com"
-//             }
-//             ];
-// var item = customers[Math.floor(Math.random() * customers.length)],
-//   list = document.getElementById('cus_list'),
-//   quoteClass = document.getElementById('customer-quotes'),
-//   imageClass = document.getElementById('customer-logos'),
-//   fragment = document.createDocumentFragment(),
-//   companyEle = document.createElement("li"),
-//   nameEle = document.createElement("li"),
-//   quoteEle = document.createElement("li"),
-//   imageEle = document.createElement("li"),
-//   urlEle = document.createElement("li");
-//
-// companyEle.innerText = "Company: " + item.company;
-// nameEle.innerText = "Name: " + item.name + " ";
-// quoteEle.innerText = "Quote: " + item.quote + " ";
-// imageEle.innerText = "logo: " + item.image + " ";
-// urlEle.innerText = "website: " + item.url + " ";
-// fragment.appendChild(companyEle);
-// fragment.appendChild(nameEle);
-// fragment.appendChild(quoteEle);
-// fragment.appendChild(imageEle);
-// fragment.appendChild(urlEle);
-// list.appendChild(fragment);
-// quoteClass.appendChild(companyEle);
-// imageClass.appendChild(imageEle);
+function findmatch(array) {
 
-// Version 1
+    var arr2 = array;
+    for(i = 0; i < array.length; i++) {
+        if(comparearray.length > 2) {
+            var phrase = (datafull.slice( (comparearray[0].index-1), (comparearray[comparearray.length-1].index+1)) ).join(" ");
+            comparearray.push( { distance: tempindex });
+            comparearray.push( { phrase: phrase } );
+            finalarray.push(comparearray);
+            }
+            // console.log(comparearray);
 
-// var item = customers[1], list = document.getElementById('cus_list'), fragment = document.createDocumentFragment(), element = document.createElement("li");
-//
-//   element.appendChild(document.createTextNode("Company: " + item.company));
-//     element.appendChild(document.createTextNode("Name: " + item.name + " "));
-//
-//     fragment.appendChild(element);
-//   list.appendChild(fragment);
+
+        if( index === 0 ) { index = tempindex } else {
+            if( tempindex < index ) {
+                index = tempindex;
+                matcharray.push(comparearray);
+                // console.log(matcharray);
+                matchingString = (datafull.slice( (comparearray[0].index-1), (comparearray[comparearray.length-3].index-1))).join(" ");
+
+            }
+        }
+          comparearray = [];
+          temparray = [];
+        for(j=counter; j < arr2.length; j++) {
+
+            var currentword = arr2[j].word;
+            if (temparray.indexOf(currentword) == -1 ) {
+                temparray.push(arr2[j].word);
+                comparearray.push(arr2[j]);
+                tempindex = comparearray[comparearray.length-1].index - comparearray[0].index;
+
+            }
+        }
+    counter++;
+     }
+     return matchingString;
+}
+
+alert(findmatch(ran));
